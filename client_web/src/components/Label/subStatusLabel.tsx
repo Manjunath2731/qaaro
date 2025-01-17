@@ -1,0 +1,105 @@
+import { FC, ReactNode } from 'react';
+import PropTypes from 'prop-types';
+import { styled } from '@mui/material/styles';
+
+interface LabelProps {
+    className?: string;
+    color?:
+    | 'primary'
+    | 'black'
+    | 'secondary'
+    | 'error'
+    | 'warning'
+    | 'success'
+    | 'info'
+    | 'bigsuccess';
+    // Added 'bigsuccess' color option
+    children?: ReactNode; // Defined children prop correctly
+}
+
+const LabelWrapper = styled('span')(
+    ({ theme }) => `
+      background-color: ${theme.colors.alpha.black[5]};
+      padding: ${theme.spacing(0.5, 1)};
+      font-size: ${theme.typography.pxToRem(13)};
+      border-radius: ${theme.general.borderRadius};
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      max-height: ${theme.spacing(3)};
+      width: 165px; /* Fixed width */
+      height: 36px; /* Fixed height */
+      font-weight:bold;
+
+      &.MuiLabel {
+        &-primary {
+          background-color: ${theme.colors.primary.lighter};
+          color: ${theme.palette.primary.main};
+        }
+
+        &-black {
+          background-color: ${theme.colors.alpha.black[100]};
+          color: ${theme.colors.alpha.white[100]};
+        }
+        
+        &-secondary {
+          background-color: ${theme.colors.secondary.lighter};
+          color: ${theme.palette.secondary.main};
+        }
+        
+        &-success { // Combine 'success' and 'bigsuccess'
+          background-color: ${theme.colors.success.lighter};
+          color: ${theme.palette.success.main};
+         
+        }
+        
+        &-warning {
+          background-color: ${theme.colors.warning.lighter};
+          color: ${theme.palette.warning.main};
+        }
+                
+        &-error{ // Combine 'error' and 'bigerror'
+          background-color: ${theme.colors.error.lighter};
+          color: ${theme.palette.error.main};
+         
+        }
+        
+        &-info {
+          background-color: ${theme.colors.info.lighter};
+          color: ${theme.palette.info.main};
+        }
+      }
+`
+);
+
+
+const SubStatusLabel: FC<LabelProps> = ({
+    className,
+    color = 'secondary',
+    children, // Ensure 'children' is properly handled
+    ...rest
+}) => {
+    return (
+        <LabelWrapper className={`MuiLabel-${color}`} {...rest}>
+            {children}
+        </LabelWrapper>
+    );
+};
+
+SubStatusLabel.propTypes = {
+    children: PropTypes.node,
+    className: PropTypes.string,
+    color: PropTypes.oneOf([
+        'primary',
+        'black',
+        'secondary',
+        'error',
+        'warning',
+        'success',
+        'info',
+        'bigsuccess',
+        // Include 'bigsuccess' in PropTypes validation
+    ])
+};
+
+export default SubStatusLabel;

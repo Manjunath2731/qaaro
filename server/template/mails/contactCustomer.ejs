@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Customer Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #333;
+    }
+    p {
+      color: #666;
+    }
+    .button {
+      display: inline-block;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      margin-top: 20px;
+      border-radius: 5px;
+    }
+    .button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1><%= translations.contact_subject %></h1>
+    <p><%= translations.contact_welcome_message %></p>
+    <p><%= translations.contact_message %></p>
+    <a href="<%= link %>" class="button"><%= translations.contact_button %></a>
+    <p><%= translations.contact_gratitude %></p>
+    <p><%= translations.contact_best_regards %></p>
+    <p><%= translations.contact_team %></p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer_Signed_Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            padding: 0px 30px;
+            padding-top: 25px;
+        }
+
+        .heading {
+            color: rgb(221, 14, 14);
+            font-size: x-large;
+            margin-top: 30px;
+        }
+
+        .tableDesc {
+            color: #040303;
+            font-size: medium;
+            margin-top: 80px;
+        }
+
+        .tablebelowsec{
+            color: #040303;
+            font-size: medium;
+        }
+
+        .logo {
+            width: 100px;
+            margin: 0 auto;
+        }
+
+        .content {
+            padding: 20px;
+            color: #555;
+        }
+
+        .table-container {
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .signature-container {
+            margin-top: 20px;
+            padding-top: 10px;
+        }
+
+        .signature-image {
+            height: 120px;
+            width: 70%;
+            padding-left: 20px;
+            align-self: center;
+            align-items: center;
+        }
+
+        .footer {
+            padding-right: 5%;
+            margin-top: 100px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align:start;
+            font-size: small;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Set the width for Header 1 and Header 2 */
+        td:nth-child(1) {
+            width: 25%;
+        }
+
+        td:nth-child(2) {
+            width: 75%;
+        }
+        .dynamic-data{
+            font-weight: bold;
+            font-size: small;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <img class="logo" src="https://fx-logistics.s3.ap-south-1.amazonaws.com/loco/dpd.svg" alt="Logo">
+    </div>
+    <div class="content">
+        <h1 class="heading">Confirmation of receipt recipient <br/> Acknowledgment of receipt of recipient</h1>
+        <h3 class="tableDesc">Please fill out the form and send it back to us.</h3>
+        <div class="table-container">
+            <table>
+                <tr>
+                </tr>
+                <tr>
+                    <td>Date of delivery</td>
+                    <td class="dynamic-data">{{dateOfDelivery}}</td>
+                </tr>
+                <tr>
+                    <td>Parcel label number</td>
+                    <td class="dynamic-data">{{packageLableNumber}}</td>
+                </tr>
+                <tr>
+                    <td>Sender</td>
+                    <td class="dynamic-data">{{sender}}</td>
+                </tr>
+                <tr>
+                    <td>Company name</td>
+                    <td class="dynamic-data">{{companyName}}</td>
+                </tr>
+                <tr>
+                    <td>Recipient address</td>
+                    <td class="dynamic-data">{{recepientData}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="signature-container">
+            <h3 class="tablebelowsec">Confirmation of receipt from the recipient</h3>
+            <p style="font-size:smaller">I hereby confirm receipt of the above package.</p>
+        </div>
+        <div class="final-container">
+            <div class="place-date-container" style="padding-top: 10px; margin-top: 40px;">
+                <div style="display: flex; justify-content: space-between;">
+                    <div style="width: 40%;">
+                        <p class="dynamic-data" style="margin-bottom: -5px;">{{place}}, {{date}}</p>
+                        <hr />
+                        <p style="margin-top: -5px;">Place, Date</p>
+                    </div>
+                    <div style="display: flex; flex-direction: column; width: 50%;">
+                        <div style="width: 100%;">
+                            <p style="margin-bottom: -5px;">
+                                <img class="signature-image" src="{{signatureImage}}" alt="Signature">
+                            </p>
+                            <hr />
+                            <p style="margin-top: -5px;">Signature, Company stamp</p>
+                        </div>
+                        <div style="width: 100%;">
+                            <p class="dynamic-data" style="margin-bottom: -5px;">{{firstName}} {{lastName}}</p>
+                            <hr />
+                            <p style="margin-top: -5px;">First and last name (in block letters)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div style="display: flex; justify-content: flex-end;">
+                <div style="display: flex;">
+                    <div style="padding-right: 10px;">
+                        <p style="font-weight: 600; font-size: small;">NETWORK <br /> MEMBER OF</p>
+                    </div>
+                    <hr />
+                    <div style="padding-left: 10px;">
+                        <img class="logo" src="https://fx-logistics.s3.ap-south-1.amazonaws.com/loco/geopost.png"
+                            alt="Logo">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

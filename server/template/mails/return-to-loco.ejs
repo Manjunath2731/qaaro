@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Returned to LoCo</title>
+    <style>
+        body {
+            min-width: 100;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #222222;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        .message {
+            white-space: pre-line;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <% if (message) { %>
+            <pre class="message"><%= message %></pre>
+        <% } %>
+    
+        <% if (signature) { %>
+            <img src="<%= signature %>" alt="Signature" style="max-width: 60%;">
+        <% } %>
+    </div>
+</body>
+
+</html>

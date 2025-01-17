@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer_Denied_Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            padding: 0px 30px;
+            padding-top: 25px;
+        }
+
+        .heading {
+            color: rgb(221, 14, 14);
+            font-size: x-large;
+            margin-top: 30px;
+        }
+
+        .tableDesc {
+            color: #040303;
+            font-size: medium;
+        }
+
+        .heading-2 {
+            color: rgb(15, 11, 11);
+            font-size: large;
+        }
+
+        .tableDesc-2 {
+            color: #040303;
+            font-size: medium;
+        }
+
+        .tablebelowsec {
+            color: #040303;
+            font-size: medium;
+        }
+
+        .logo {
+            width: 100px;
+            margin: 0 auto;
+        }
+
+        .content {
+            padding: 20px;
+            color: #555;
+        }
+
+        .table-container {
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .signature-container {
+            margin-top: 20px;
+            padding-top: 10px;
+        }
+
+        .footer {
+            padding-right: 5%;
+            margin-top: 100px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: start;
+            font-size: small;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Set the width for Header 1 and Header 2 */
+        td:nth-child(1) {
+            width: 25%;
+        }
+
+        td:nth-child(2) {
+            width: 75%;
+        }
+
+        .dynamic-data {
+            font-weight: bold;
+            font-size: small;
+        }
+
+        .footer-text {
+            color: #040303;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="firstPage">
+        <div class="header">
+            <img class="logo" src="https://fx-logistics.s3.ap-south-1.amazonaws.com/loco/dpd.svg" alt="Logo">
+        </div>
+        <div class="content">
+            <h1 class="heading">Legally binding declaration</h1>
+            <h3 class="tableDesc">Please fill out the form and send it back to us.</h3>
+            <div id="tableContainer1" class="table-container"></div>
+            <div class="signature-container">
+                <h3 class="tablebelowsec">Legally binding declaration</h3>
+                <p style="font-size:smaller; color: #040303;">I hereby declare that I have delivered the above-mentioned
+                    package to the named
+                    recipient or a person present at the above-mentioned address <br />
+                    who is ready to receive it in accordance with DPD's binding process specifications.</p>
+            </div>
+            <div id="finalContainer1"></div>
+            <div class="footer">
+                <div style="display: flex; justify-content: space-between;">
+                    <div>
+                        <p class="footer-text">Please note that a false statement on the legally binding declaration can
+                            be
+                            punished with <br />
+                            imprisonment in the event of a court hearing.</p>
+                    </div>
+                    <div style="display: flex;">
+                        <div style="padding-right: 10px;">
+                            <p style="font-weight: 600; font-size: small;">NETWORK <br /> MEMBER OF</p>
+                        </div>
+                        <hr />
+                        <div style="padding-left: 10px;">
+                            <img class="logo" src="https://fx-logistics.s3.ap-south-1.amazonaws.com/loco/geopost.png"
+                                alt="Logo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Next page -->
+    <div class="secondePage" style="page-break-before: always;">
+        <div class="header">
+            <img class="logo" src="https://fx-logistics.s3.ap-south-1.amazonaws.com/loco/dpd.svg" alt="Logo">
+        </div>
+        <div class="content">
+            <h1 class="heading-2">Page 2 of the legally binding declaration</h1>
+            <h3 class="tableDesc-2">If the deliverer can provide more precise information about the delivery process,
+                these
+                must be described here.</h3>
+            <div id="tableContainer2" class="table-container"></div>
+            <div class="signature-container">
+                <p style="font-size:smaller; color: #040303;">I comment on the precise circumstances of delivery as
+                    follows:
+                </p>
+                <textarea
+                    style="border: none; border-bottom: 1px solid #040303; width: 100%;">{{description}}</textarea>
+            </div>
+            <div id="finalContainer2"></div>
+            <div class="footer">
+                <div style="display: flex; justify-content: space-between;">
+                    <div>
+                        <p class="footer-text">Please note that a false statement on the legally binding declaration can
+                            be
+                            punished with <br />
+                            imprisonment in the event of a court hearing.</p>
+                    </div>
+                    <div style="display: flex;">
+                        <div style="padding-right: 10px;">
+                            <p style="font-weight: 600; font-size: small;">NETWORK <br /> MEMBER OF</p>
+                        </div>
+                        <hr />
+                        <div style="padding-left: 10px;">
+                            <img class="logo" src="https://fx-logistics.s3.ap-south-1.amazonaws.com/loco/geopost.png"
+                                alt="Logo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function generateTable(containerId, data) {
+            var tableContainer = document.getElementById(containerId);
+            var tableHtml = "<table>";
+
+            for (var key in data) {
+                tableHtml += "<tr>";
+                tableHtml += "<td>" + key + "</td>";
+                tableHtml += "<td class='dynamic-data'>" + data[key] + "</td>";
+                tableHtml += "</tr>";
+            }
+
+            tableHtml += "</table>";
+            tableContainer.innerHTML = tableHtml;
+        }
+
+        function generateFinalContainer(containerId, place, date, firstName, lastName) {
+            var finalContainer = document.getElementById(containerId);
+            var finalContainerHtml = `
+                <div class="final-container">
+                    <div class="place-date-container" style="padding-top: 10px; margin-top: 40px;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <div style="width: 40%;">
+                                <p class="dynamic-data" style="margin-bottom: -5px;">${place}, ${date}</p>
+                                <hr />
+                                <p style="margin-top: -5px;">Place, Date</p>
+                            </div>
+                            <div style="display: flex; flex-direction: column; width: 50%;">
+                                <div style="width: 100%;">
+                                    <img class="signature-image" src="${signature}" alt="Signature">
+                                    <hr />
+                                    <p style="margin-top: -5px;">Signature of the delivery person</p>
+                                </div>
+                                <div style="width: 100%;">
+                                    <p class="dynamic-data" style="margin-bottom: -5px;">${firstName} ${lastName}</p>
+                                    <hr />
+                                    <p style="margin-top: -5px;">First and last name of the delivery person (in block letters)
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+            finalContainer.innerHTML = finalContainerHtml;
+        }
+
+        // Example data for the first page
+        var data1 = {
+            "Date of delivery": "{{dateOfDelivery}}",
+            "Parcel label number": "{{packageLableNumber}}",
+            "Sender": "{{sender}}",
+            "Company name": "{{companyName}}",
+            "Recipient address": "{{recepientData}}",
+        };
+
+        var finalContainerData = {
+            place: "{{place}}",
+            date: "{{date}}",
+            firstName: "{{firstName}}",
+            lastName: "{{lastName}}"
+
+        };
+
+        var signature = "{{signatureImage}}";
+
+        // Generate tables for each page
+        generateTable("tableContainer1", data1);
+        generateTable("tableContainer2", data1);
+        generateFinalContainer("finalContainer1", finalContainerData.place, finalContainerData.date, finalContainerData.firstName, finalContainerData.lastName, finalContainerData.signature);
+        generateFinalContainer("finalContainer2", finalContainerData.place, finalContainerData.date, finalContainerData.firstName, finalContainerData.lastName, finalContainerData.signature);
+    </script>
+
+</body>
+
+</html>
